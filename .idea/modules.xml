@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/food_managment_system_ui.iml" filepath="$PROJECT_DIR$/.idea/modules/food_managment_system_ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/food_managment_system_ui_main.iml" filepath="$PROJECT_DIR$/.idea/modules/food_managment_system_ui_main.iml" group="food_managment_system_ui" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/food_managment_system_ui_test.iml" filepath="$PROJECT_DIR$/.idea/modules/food_managment_system_ui_test.iml" group="food_managment_system_ui" />
     </modules>
   </component>
 </project>

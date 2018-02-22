@@ -1,1 +1,7 @@
-# Created by .ignore support plugin (hsz.mobi)
+/build/*
+/.gradle/*
+/build/
+/.gradle/
+/.idea/
+/.idea/*
+/build/resources/main/application.properties
