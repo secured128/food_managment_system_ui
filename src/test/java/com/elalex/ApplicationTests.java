@@ -11,17 +11,17 @@ import static org.assertj.core.api.BDDAssertions.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class ApplicationTests {
-
-	@Autowired
-	private CustomerRepository repository;
-
-	@Test
-	public void shouldFillOutComponentsWithDataWhenTheApplicationIsStarted() {
-		then(this.repository.count()).isEqualTo(5);
-	}
-
-	@Test
-	public void shouldFindTwoBauerCustomers() {
-		then(this.repository.findByLastNameStartsWithIgnoreCase("Bauer")).hasSize(2);
-	}
+//
+//	@Autowired
+//	private UserRepository repository;
+//
+//	@Test
+//	public void shouldFillOutComponentsWithDataWhenTheApplicationIsStarted() {
+//		then(this.repository.count()).isEqualTo(5);
+//	}
+//
+//	@Test
+//	public void shouldFindTwoBauerUsers() {
+//		then(this.repository.findByNameStartsWithIgnoreCase("ella")).hasSize(2);
+//	}
 }

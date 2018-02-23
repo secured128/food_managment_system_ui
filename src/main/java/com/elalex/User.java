@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import javax.persistence.*;
 import java.io.IOException;
 import java.io.Serializable;
 import java.io.StringWriter;
@@ -20,7 +19,7 @@ public class User implements Serializable {
     private ObjectMapper jsonMapper = new ObjectMapper();
 
     @JsonProperty("id")
-    private long id;
+    private Long id;
 
     @JsonProperty("name")
     private String name;
@@ -31,16 +30,22 @@ public class User implements Serializable {
     protected User() {
     }
 
+    public User(Long id, String name, String password) {
+        this.setId(id);
+        this.setName(name);
+        this.setPassword(password);
+    }
+
     public User(String name, String password) {
         this.setName(name);
         this.setPassword(password);
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
