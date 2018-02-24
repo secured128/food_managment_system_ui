@@ -1,11 +1,14 @@
 package com.elalex;
 
+import com.vaadin.ui.Notification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -45,12 +48,30 @@ public class UserRESTCaller {
 
     public User save(User user) {
         try {
-            ResponseEntity<User> responseEntity = new RestTemplateBuilder().build().postForEntity("http://localhost:8090/user/create", user, User.class);
+            ResponseEntity<User> responseEntity = new RestTemplateBuilder().build().postForEntity("http://localhost:8090/user/save", user, User.class);
             return responseEntity.getBody();
+        } catch (HttpClientErrorException e) {
+            log.error(e.getMessage());
+            if (e.getStatusCode() == HttpStatus.CONFLICT) {
+                Notification.show("Duplicate User", "User with name " + user.getName() + " already exist", Notification.Type.ERROR_MESSAGE);
+            } else {
+                Notification.show("Error", e.getStatusText(), Notification.Type.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            Notification.show("Error", e.getMessage(), Notification.Type.ERROR_MESSAGE);
+        }
+        return null;
+    }
+
+    public void delete(User user) {
+        try {
+            ResponseEntity<HttpStatus> responseEntity = new RestTemplateBuilder().build().postForEntity("http://localhost:8090/user/delete", user, HttpStatus.class);
+            return;
         } catch (Exception e) {
             log.error(e.getMessage());
         }
-        return null;
+        return;
     }
 
     private List<User> getUsersListFromMapsList(List<Map> mapsList) {
