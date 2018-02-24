@@ -43,6 +43,16 @@ public class UserRESTCaller {
         return null;
     }
 
+    public User save(User user) {
+        try {
+            ResponseEntity<User> responseEntity = new RestTemplateBuilder().build().postForEntity("http://localhost:8090/user/create", user, User.class);
+            return responseEntity.getBody();
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
+        return null;
+    }
+
     private List<User> getUsersListFromMapsList(List<Map> mapsList) {
         List<User> usersList = new ArrayList<>();
         for (int i = 0; i < mapsList.size(); i++) {

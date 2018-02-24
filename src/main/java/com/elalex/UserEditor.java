@@ -60,7 +60,7 @@ public class UserEditor extends VerticalLayout {
 		save.setClickShortcut(ShortcutAction.KeyCode.ENTER);
 
 		// wire action buttons to save, delete and reset
-//		save.addClickListener(e -> repository.save(user));
+		save.addClickListener(e -> repository.save(user));
 //		delete.addClickListener(e -> repository.delete(user));
 		cancel.addClickListener(e -> editUser(user));
 		setVisible(false);
